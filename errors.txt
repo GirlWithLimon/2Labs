@@ -1,0 +1,3 @@
+Error! Name alex with a small first letter
+Error! Name Dash4 does not consist only of letters
+Error! Name Art3m does not consist only of letters
