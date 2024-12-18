@@ -1,7 +1,6 @@
 #!/home/vboxuser/PycharmProjects/pythonProject/.venv/bin/python
 import sys
 def with_file(arg: list[str]):
-    sys.stderr=open('errors.txt','w')
     with open(arg[1],"r") as f:
         for line in f:
             string=line.strip()
@@ -12,7 +11,7 @@ def with_file(arg: list[str]):
             elif not string.isalpha():
                 sys.stderr.write(f"Error! Name {string} does not consist only of letters\n")
             else:
-                print(f"Hi, {string}!")
+                print(f"Nice to see you, {string}!")
 
 def without_file():
    try:
@@ -26,10 +25,14 @@ def without_file():
                print(f"Nice to see you, {A}!")
    except KeyboardInterrupt:
         print("\nGoodbye!")
-
+sys.stderr=open('errors.txt','w')
 if len(sys.argv)>1:
-    namefile=sys.argv
-    with_file(namefile)
+    filename=sys.argv[1]
+    if filename.endswith(".txt"):
+        namefile=sys.argv
+        with_file(namefile)
+    else:
+        print(f"You must specify the format .txt for file. If the input without a file, make only a program call")
 else:
     without_file()
 
